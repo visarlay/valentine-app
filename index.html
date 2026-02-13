@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Be My Valentine ❤️</title>
+
+<style>
+body {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial;
+}
+
+.container {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+img {
+    width: 100%;
+    height: 220px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: opacity 1s ease;
+}
+
+h1 {
+    color: #ff3b6f;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#yesBtn { background: #ff3b6f; color: white; }
+#noBtn { background: #ccc; position: absolute; }
+
+#message {
+    font-size: 22px;
+    color: #ff3b6f;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img id="slideshow" src="photos/photo1.jpg">
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😅</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+let photos = [
+ "photos/1photo.jpeg",
+ "photos/2photo.jpeg",
+ "photos/3photo.jpeg",
+ "photos/4photo.jpeg",
+  "photos/5photo.jpeg",
+ "photos/6photo.jpeg"
+];
+
+let index = 0;
+const slide = document.getElementById("slideshow");
+
+setInterval(() => {
+    index = (index + 1) % photos.length;
+    slide.style.opacity = 0;
+    setTimeout(() => {
+        slide.src = photos[index];
+        slide.style.opacity = 1;
+    }, 500);
+}, 2000);
+
+function yesClicked() {
+    document.getElementById("message").innerHTML = "Yayyy!!! 💕 Forever us 😘";
+}
+
+function moveNo() {
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 120);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
